@@ -2,7 +2,7 @@
 layout: post
 title: Hello MUD !
 ---
-```
+```lua
 local space = P' '
 local patt = Ct( ( C(P(1)^1) - space ) ^0 ) 
 local matches = patt:match('what is mud ?')
