@@ -12,7 +12,6 @@ local matches = patt:match('who is mud ? ')
 for _, m in ipairs(matches) do
     print(m)
 end
-
 ```
 
 ![MUD](https://unsplash.it/600/400/?random)
