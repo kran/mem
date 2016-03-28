@@ -11,7 +11,7 @@ description: what's mud
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
 avatar: http://mud.im/images/jekyll-logo.png
 
-excerpt_separator: <!–break–>
+excerpt_separator: "\n\n\n"
 
 #
 # Flags below are optional
