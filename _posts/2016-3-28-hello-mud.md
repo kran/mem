@@ -15,7 +15,7 @@ for _, m in ipairs(matches) do
 end
 ```
 
-![MUD](https://unsplash.it/600/400/?random)
+![MUD](https://unsplash.it/720/250/?random)
 
 
 after breaker;
