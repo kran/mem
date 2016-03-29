@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Hello MUD !
+category: Test
 ---
 ```lua
 local l = require'lpeg'
