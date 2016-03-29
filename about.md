@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+![mud](https://unsplash.it/720/250/?random)
 
 ### More Information
 
