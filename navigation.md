@@ -1,3 +1,3 @@
-# Mud
+# MUD
 
 [About](index.md)
