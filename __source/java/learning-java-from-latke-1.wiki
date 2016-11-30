@@ -1,0 +1,95 @@
+作为PHP程序员是很无聊的, 所以看看Java.我对Java一无所知,以下内容一定有错漏的地方,请路过的高手开示一二.多谢多谢.
+这个学习笔记暂时会停留在servlet, latkes上, 暂时不会跨越jetty.
+
+从latke-demo的`Starter.java`开始:
+
+{{{
+Latkes.setScanPath("org.b3log.latke.demo.hello"); // For Latke IoC
+Latkes.initRuntimeEnv();
+
+String classesPath = ClassLoader.getSystemResource("").getPath(); // Real path including maven sub folder
+
+String webappDirLocation = classesPath.replace("target/classes/","src/main/webapp/"); // POM structure in dev env
+
+final File file = new File(webappDirLocation);
+if (!file.exists()) {
+    webappDirLocation = ""; // production environment
+}
+
+final Server server = new Server(Integer.valueOf(Latkes.getServerPort()));
+final WebAppContext root = new WebAppContext();
+root.setParentLoaderPriority(true); // Use parent class loader
+root.setContextPath("/");
+root.setDescriptor(webappDirLocation + "/WEB-INF/web.xml");
+root.setResourceBase(webappDirLocation);
+server.setHandler(root);
+
+try {
+    server.start();
+} catch (final Exception e) {
+    e.printStackTrace();
+
+    System.exit(-1);
+}
+}}}
+
+这段代码前两行Latkes的先略过不表.从这里开始看:
+
+=== ClassLoader.getSystemResource("") ===
+
+行为上看: 按照`classpath`顺序查找参数中指定的资源,包括jar包里面.但是当参数为空串的时候,只会查找目录而不包含jar包. <br>
+比如: `java -cp WEB-INF/lib/*:WEB-INF/classes Starter`<br>
+
+传递空串会返回`/path/to/WEB-INF/classes`路径<br>
+非空串则会检索jar包,返回类似这种路径 `/path/to/WEB-INF/lib/cdi-api-1.0.jar!beans.xsd`<br>
+内部实现没有找到.<br>
+
+`classPath.replace`目的是调试, 因为后和开发时生成的目录结构不一样, 所以算是一个补丁.<br>
+上面的代码在产品环境下按照注释:
+
+`java-cp WEB-INF/lib/*:WEB-INF/classes org.b3log.latke.demo.hello.Starter `
+
+应该是跑不通的,因为找不到`web.xml`,只需要`java -cp .:WEB-INF/lib/*:WEB-INF/classes`, 这样做的原因还是看前面的`classloader`部分. 
+
+代码里面接下来都是关于jetty的, 相关资料看这里: [[http://www.eclipse.org/jetty/documentation/current/embedding-jetty.html|Embedding jetty]],暂时不会深入.
+
+=== Latkes.getServerPort() ===
+
+问题: 这个port是怎么来的呢?<br>
+Latke类有一个静态初始化块, 里面加载了:
+
+* latke.properties
+* local.properties
+* remote.properties
+
+三个文件, 第一个是latke框架本身的配置.端口在此配置.那latke是如何加载的呢?回到代码的第二句.
+
+=== Latkes.initRuntimeEnv() ===
+
+这个函数根据`latke.properties`初始化了运行环境和数据库配置, 看代码runtimeEnv的值总是Local, 这样的话就会总是去初始化数据库了.不确定为什么.
+
+latke到这里算是告一个小小的段落,接下来有一些servlet相关的东西.
+
+Starter的代码中, jetty加载了web.xml, 到底jetty如何运作我们先不管,以免战线太长.总之先理解为jetty按照web.xml的说明进行一些初始化工作吧.<br>
+但是servlet是绕不过去的,先看web.xml:
+
+{{{
+<listener>
+        <listener-class>org.b3log.latke.demo.hello.HelloServletListener</listener-class>
+</listener>
+}}}
+
+这一行定义了`servlet`的`listerner`, 什么是`listener`呢?看这里: [[https://docs.oracle.com/cd/B14099_19/web.1012/b14017/filters.htm|filters & listeners]]<br>
+event listener在servlet发生关键事件时给予应用监听此事件的能力. servlet事件包含两个级别:
+
+* 应用级别(怎么形容?就是应用吧)
+* 会话级别(同一个用户的一系列请求)
+
+_但是看latke的代码还有一个请求级别的ServletRequestListener, 暂时还不确定和session级别有多大区别,之后验证_
+
+现在我们知道jetty在初始化后会通过`ServletContextListener`通知我们可以接收请求了.接下来latke到底做了哪些事情?下回再说.
+
+----
+PS: [[http://www.ibm.com/developerworks/cn/java/j-lo-jetty/index.html|jetty工作原理]]
+
+

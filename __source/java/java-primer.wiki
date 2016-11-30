@@ -1,0 +1,16 @@
+=== namespace ===
+JAVA: 
+{{{
+package com.orz0.learn;
+
+import com.orz0.pkg1.Demo;
+import com.orz0.pkg2.*;
+import static com.orz0.pkg3.Func.*;
+}}}
+
+=== 变量/方法 access specifier ===
+- public：任何包中的任何对象都能看到该变量。（不要使用此值；请参阅公共变量边栏。）
+- protected：在同一个包中或（在任何包中定义的）一个子类中定义的任何对象都能看到此变量。
+- 没有修饰符（也称为友好 或包私有 访问）：仅在同一个包中定义的类的对象能够看到此变量。
+- private：只有包含该变量的类能够看到它。 
+  
