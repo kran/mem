@@ -1,4 +1,4 @@
 #!/bin/bash
 
 cd ./doc
-../jemdoc -o ../html/ *.jemdoc
+../jemdoc -o ../v1/ *.jemdoc
