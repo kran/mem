@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <title>小公主</title>
+    <link rel="stylesheet" href="css/public.css" />
+    <link rel="stylesheet" href="css/css.css" />
+<style type="text/css">
+    <!-- num start -->
+    .m-page-game .m-number-box .m-number0{
+    background: url(images/zeoo.png) 50% 50% no-repeat;
+    }
+    .m-page-game .m-number-box span, {
+    background: url(images/zeoo.png) 50% 50% no-repeat;
+    }
+    .m-page-game .m-number-box .m-number1 {
+    background: url(images/one.png) 50% 50% no-repeat;
+    background-size: 100% 100%;
+    display:inline;
+    }
+    .m-page-game .m-number-box .m-number2 {
+    background: url(images/two.png) 50% 50% no-repeat;
+    background-size: 100% 100%;
+    display:inline;
+    }
+    .m-page-game .m-number-box .m-number3 {
+    background: url(images/three.png) 50% 50% no-repeat;
+    background-size: 100% 100%;
+    display:inline;
+    }
+    .m-page-game .m-number-box .m-number4 {
+    background: url(images/four.png) 50% 50% no-repeat;
+    background-size: 100% 100%;
+    display:inline;
+    }
+    .m-page-game .m-number-box .m-number5 {
+    background: url(images/five.png) 50% 50% no-repeat;
+    background-size: 100% 100%;
+    display:inline;
+    }
+    .m-page-game .m-number-box .m-number6 {
+    background: url(images/six.png) 50% 50% no-repeat;
+    background-size: 100% 100%;
+    display:inline;
+    }
+    .m-page-game .m-number-box .m-number7 {
+    background: url(images/seven.png) 50% 50% no-repeat;
+    background-size: 100% 100%;
+    display:inline;
+    }
+    .m-page-game .m-number-box .m-number8 {
+    background: url(images/eight.png) 50% 50% no-repeat;
+    background-size: 100% 100%;
+    display:inline;
+    }
+    .m-page-game .m-number-box .m-number9 {
+    background: url(images/nine.png) 50% 50% no-repeat;
+    background-size: 100% 100%;
+    display:inline;
+    }
+    <!-- num end -->
+
+    .m-alert-scorebox .m-alert-score0{
+    background: url(images/zeoo.png) 0 0 no-repeat;background-size:100% 100%;display:inline;
+    }
+    .m-alert-scorebox .m-alert-score1{
+    background: url(images/one.png) 0 0 no-repeat;background-size:100% 100%;display:inline;
+    }
+    .m-alert-scorebox .m-alert-score2{
+    background: url(images/two.png) 0 0 no-repeat;background-size:100% 100%;display:inline;
+    }
+    .m-alert-scorebox .m-alert-score3{
+    background: url(images/three.png) 0 0 no-repeat;background-size:100% 100%;display:inline;
+    }
+    .m-alert-scorebox .m-alert-score4{
+    background: url(images/four.png) 0 0 no-repeat;background-size:100% 100%;display:inline;
+    }
+    .m-alert-scorebox .m-alert-score5{
+    background: url(images/five.png) 0 0 no-repeat;background-size:100% 100%;display:inline;
+    }
+    .m-alert-scorebox .m-alert-score6{
+    background: url(images/six.png) 0 0 no-repeat;background-size:100% 100%;display:inline;
+    }
+    .m-alert-scorebox .m-alert-score7{
+    background: url(images/seven.png) 0 0 no-repeat;background-size:100% 100%;display:inline;
+    }
+    .m-alert-scorebox .m-alert-score8{
+    background: url(images/eight.png) 0 0 no-repeat;background-size:100% 100%;display:inline;
+    }
+    .m-alert-scorebox .m-alert-score9{
+    background: url(images/nine.png) 0 0 no-repeat;background-size:100% 100%;display:inline;
+    }
+    <!-- score end -->
+    .m-page-game .m-music-btn {
+    background: url(images/music-open.png) 0 0 no-repeat;
+    }
+    .m-page-game .m-music-stop {
+    background: url(images/music-close.png) 0 0 no-repeat;
+    }
+    .m-page-game .m-music-return {
+    background: url(images/return-bag.png) 0 0 no-repeat;
+    left: 449px;
+    }
+    .m-page-game .m-game-stop {
+    background: url(images/stop-bag.png) 0 0 no-repeat;
+    left: 547px;
+    }
+
+    .m-page-game .m-number-box .m-number0 {
+        float: left;
+        width: 35px;
+        height: 54px;
+        overflow: hidden;
+        background: url(images/zeoo.png) 50% 50% no-repeat;
+        margin: 0 0 0 5px;
+        background-size: 100% 100%;
+        display:inline;
+    }
+
+    .m-alert-scorebox span{
+        float:left;width:58px;height:88px;margin:7px 0 0 7px;overflow:hidden;background-size:100% 100%;background: url(images/zeoo.png) 0 0 no-repeat;display:none;
+    }
+
+    .m-alert-scorebox .m-alert-score0{
+        display: inline;
+    }
+    <!-- muisc end -->
+</style>
+<script type="text/javascript">
+	var $STCONFIG = {
+			VERSION 	: '1.0'
+		};
+	if(/Android (\d+\.\d+)/.test(navigator.userAgent)){
+		var version = parseFloat(RegExp.$1);
+		if(version > 2.3){
+			var phoneScale = parseInt(window.screen.width) / 640;
+			document.write('<meta name="viewport" content="width=640, minimum-scale = '+ phoneScale +', maximum-scale = '+ phoneScale +', target-densitydpi=device-dpi">');
+		}else{
+			document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">');
+		}
+	}else{
+		document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');
+	}
+	if(navigator.userAgent.indexOf('MicroMessenger') >= 0){
+		document.addEventListener('WeixinJSBridgeReady', function() {
+			//alert(1)
+			//WeixinJSBridge.call('hideToolbar');
+		});
+	}
+	else{
+		//window.location.href = 'D-02.html';
+	}
+</script>
+    <script type="text/javascript">
+        var share ="";
+        var stopalert = "";
+        var result = "";
+        var qImg    = [
+        ];
+    </script>
+</head>
+<body>
+<audio  preload="auto" class="J-audio" loop="loop" src="images/music.mp3">
+</audio>
+<!-- loading start -->
+<section class="m-page-load J-load" ></section>
+<!-- loading end -->
+<!-- 首页 start -->
+<section class="m-page-index J-page-index" style="background-image:url(images/index-bag.jpg)"></section>
+<!-- 首页 end -->
+<!-- 游戏页 start -->
+<section class="m-page-game J-page-game" data-score="10" style="background-image:url(images/page-bag.jpg)">
+	<div class="m-number-box J-number-box" style="background-image:url(images/number-bag.png)">
+		<span class="m-number0"></span>
+		<span class="m-number0"></span>
+		<span class=""></span>
+		<span class=""></span>
+		<span class=""></span>
+		<span class=""></span>
+	</div>
+	<div class="m-music-btn J-music-btn"></div>
+	<div class="m-music-return J-alert-agin"></div>
+	<div class="m-game-stop J-game-stop"></div>
+	<div class="m-game-one" style="background-image:url(images/one-bag.png)"></div>
+	<div class="m-game-two" style="background-image:url(images/two-bag.png)"></div>
+	<div class="m-game-three" style="background-image:url(images/three-bag.png)"></div>
+	<div class="m-game-go" style="background-image:url(images/go-bag.png)"></div>
+	<div  class="m-game-mid  J-game-mid ">
+		<div class="m-game-box J-game-box">
+			<div class="m-game-mbox J-game-mbox">
+				<span class="m-game-ghost" style="background-image:url(images/ghost-bag.png)"></span>
+				<span class="m-game-boxbag J-game-boxbag" style="background-image:url(images/box-bag.png)"></span>
+			</div>
+		</div>
+		<div class="m-game-box J-game-box">
+			<div class="m-game-mbox J-game-mbox">
+				<span class="m-game-people J-game-people" style="background-image:url(images/people-bag.png)"></span>
+				<span class="m-game-boxbag J-game-boxbag  J-game-boxbagp" style="background-image:url(images/box-bag.png)"></span>
+				<span class="m-game-light J-game-light"></span>
+				<span class="m-game-test J-game-ptest "></span>
+			</div>
+		</div>
+		<div class="m-game-box J-game-box">
+			<div class="m-game-mbox J-game-mbox">
+				<span class="m-game-ghost" style="background-image:url(images/ghost-bag.png)"></span>
+				<span class="m-game-boxbag J-game-boxbag" style="images/box-bag.png)"></span>
+			</div>
+		</div>
+		<div class="m-game-box J-game-box">
+			<div class="m-game-mbox J-game-mbox">
+				<span class="m-game-ghost" style="background-image:url(images/ghost-bag.png)"></span>
+				<span class="m-game-boxbag J-game-boxbag" style="background-image:url(images/box-bag.png)"></span>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- 游戏页 end -->
+<script src="js/sea.js"></script>
+<script src="js/modules/app/main.js"></script>
+</body>
+</html>
+

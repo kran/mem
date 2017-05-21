@@ -1,3 +1,0 @@
-==== JAVA ====
-- [[java/learning-java-from-latke-1|Learning java from Latke 1]]
-

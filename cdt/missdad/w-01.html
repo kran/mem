@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="css/css.css">
+	<script type="text/javascript">
+		var $STCONFIG = {
+			VERSION 	: '1.0',
+			SHAREIT 	: {
+				title : '分享标题', 
+				con : '分享内容',
+				link : document.URL, 
+				img  : "图片地址"	
+			}
+		};
+		if(/Android (\d+\.\d+)/.test(navigator.userAgent)){
+			var version = parseFloat(RegExp.$1);
+			if(version > 2.3){
+				var phoneScale = parseInt(window.screen.width) / 640;
+				document.write('<meta name="viewport" content="width=640, minimum-scale = '+ phoneScale +', maximum-scale = '+ phoneScale +', target-densitydpi=device-dpi">');
+			}else{
+				document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">');
+			}
+		}else{
+			document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');
+		}
+		if(navigator.userAgent.indexOf('MicroMessenger') >= 0){
+			document.addEventListener('WeixinJSBridgeReady', function() {
+				//alert(1)
+				//WeixinJSBridge.call('hideToolbar');
+			});
+		}
+	</script>
+	<title>简直不敢相信这是我爸做过的事</title>
+</head>
+<body>
+	<section class="J-load"></section>
+	<section class="l-bg">
+		<img class="m-bg m-tit" src="images/tit.gif" />
+		<img class="m-bg m-bg1" src="images/bl1.png" />
+		<img class="m-bg m-bg2" src="images/bl2.png" />
+		<img class="m-bg m-bg3" src="images/bl3.png" />
+		<img class="m-bg m-bg4" src="images/bl4.png" />
+		<img class="m-bg m-bg5" src="images/bl5.png" />
+		<img class="m-bg m-bg6" src="images/fish.png" />
+	</section>
+	<section class="l-box page1">
+		<div class="m-section">
+			<div class="m-ask">
+				<div class="m-left"><img src="images/head.png" /></div>
+				<div class="m-right">
+					<div class="m-name">时小趣</div>
+					<div class="m-talk">
+						<div class="croe"></div>
+						<div class="text">我小时候，他给我喝酒...</div>
+						<div style="clear:both;"></div>
+					</div>
+					<div class="m-other">
+						<div class="m-zan">
+							<img src="images/good.png" />
+							<span class="zan-num">999</span>
+						</div>
+						<div class="m-see">
+							<img src="images/look.png" />
+							<span>999</span>
+						</div>
+						<div class="m-love"></div>
+						<div style="clear:both;"></div>
+					</div>
+					<div style="clear:both;"></div>
+				</div>
+				<div style="clear:both;"></div>
+			</div>
+
+			<div class="m-fish">
+				<a href="w-02.html" target="_self"><img src="images/whale1.png" /></a>
+			</div>
+		</div>
+	</section>
+<script src="js/sea.js?version=1.0"></script>
+<script src="js/modules/app/main.js?version=1.0"></script>
+<div style="display:none;"><script src="http://s4.cnzz.com/stat.php?id=1255395352&web_id=1255395352" language="JavaScript"></script></div>
+</body>
+</html>

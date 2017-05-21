@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>miss dady</title>
+	<link rel="stylesheet" href="css/css.css">
+	<script type="text/javascript">
+		var $STCONFIG = {
+			VERSION 	: '1.0'
+		};
+		if(/Android (\d+\.\d+)/.test(navigator.userAgent)){
+			var version = parseFloat(RegExp.$1);
+			if(version > 2.3){
+				var phoneScale = parseInt(window.screen.width) / 640;
+				document.write('<meta name="viewport" content="width=640, minimum-scale = '+ phoneScale +', maximum-scale = '+ phoneScale +', target-densitydpi=device-dpi">');
+			}else{
+				document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">');
+			}
+		}else{
+			document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');
+		}
+		if(navigator.userAgent.indexOf('MicroMessenger') >= 0){
+			document.addEventListener('WeixinJSBridgeReady', function() {
+				//alert(1)
+				//WeixinJSBridge.call('hideToolbar');
+			});
+		}
+    </script>
+</head>
+<body>
+    
+<section class="J-load"></section>
+	<section class="l-bg">
+		<img class="m-bg m-tit" src="images/tit.gif" />
+		<img class="m-bg m-bg1" src="images/bl1.png" />
+		<img class="m-bg m-bg2" src="images/bl2.png" />
+		<img class="m-bg m-bg3" src="images/bl3.png" />
+		<img class="m-bg m-bg4" src="images/bl4.png" />
+		<img class="m-bg m-bg5" src="images/bl5.png" />
+		<img class="m-bg m-bg6" src="images/fish.png" />
+	</section>
+	<section class="l-box page1">
+		<div class="m-section">
+			<div class="m-ask">
+				<div class="m-left"><img src="images/head.png" width="79px" height="79px"/></div>
+				<div class="m-right">
+					<div class="m-name">小棉袄</div>
+					<div class="m-talk">
+						<div class="croe"></div>
+						<div class="text">bye~</div>
+						<div style="clear:both;"></div>
+					</div>
+					<div class="m-other">
+						<div class="m-zan">
+							<img src="images/good.png" />
+							<span class="zan-num" ><?php echo $data['favour_num'];?></span>
+						</div>
+						<div class="m-see">
+							<img src="images/look.png" />
+							<span><?php echo $data['visit_num'];?></span>
+						</div>
+						<div class="m-love"  num="0" style='background: url(images/y-good.png)'></div>
+						<div style="clear:both;"></div>
+					</div>
+					<div style="clear:both;"></div>
+				</div>
+				<div style="clear:both;"></div>
+			</div>
+
+			<div class="m-fish">
+				<a href="w-02.html" target="_self"><img src="images/whale1.png" /></a>
+			</div>
+		</div>
+	</section>
+<script src="js/sea.js?version=1.0"></script>
+<script src="js/modules/app/main.js?version=1.0"></script>
+</body>
+</html>
+
