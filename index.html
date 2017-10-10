@@ -17,16 +17,13 @@
       </div>
       <div class="content" id="content">
          <div class="entry">
-            <div class="entry-hd" id="entry-hd">
-               <h2><a href="javascript:void(0);">&gt Loading....</a></h2>
-               <div class="meta"><span class="time"></span></div>
-            </div>
             <div class="entry-bd" id="entry-bd">
+                &gt; loading...
             </div>
          </div>
       </div>
       <div class="footer">
-         <div class="copyright"><span>&copy; 2017</span><a href="http://v2u.org">V2U</a><span>Made By</span><a href="http://gaowhen.com">GaoWhen</a></div>
+         <div class="copyright"><span>&copy; 2017</span><a href="http://v2u.org">V2U</a><span>Theme By</span><a href="http://gaowhen.com">GaoWhen</a></div>
       </div>
       <script src="static/zepto.min.js"></script>
       <script src="static/marked.js"></script>
@@ -43,8 +40,6 @@
               }else {
                   document.title = location.hash;
               }
-
-              $('#entry-hd h2 a').html(document.title);
           };
           var getPage = function(page){
               page = stripUrl(decodeURIComponent(page));
