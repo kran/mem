@@ -26,14 +26,19 @@
          <div class="copyright"><span>&copy; 2017</span><a href="http://v2u.org">V2U</a><span>Theme By</span><a href="http://gaowhen.com">GaoWhen</a></div>
       </div>
       <script src="static/zepto.min.js"></script>
-      <script src="static/marked.js"></script>
+      <script src="static/remarkable.min.js"></script>
       <script>
+          var md = new Remarkable('full', {
+                html: true,
+                linkify: false,
+                typographer: true
+          });
           var stripUrl = function(url){
               var match = url.match(/#!(.+)$/);  
-              return match ? match[1] : "/index.md";
+              return match ? match[1] : false;
           };
           var parseBody = function(body){
-              $('#entry-bd').html(marked.parse(body));
+              $('#entry-bd').html(md.render(body));
               var title = $('#entry-bd>h1').text();   
               if(title) {
                   document.title = title;
@@ -43,6 +48,8 @@
           };
           var getPage = function(page){
               page = stripUrl(decodeURIComponent(page));
+              if(!page) return;
+
               $.ajax({
                 type: "GET",
                 url: "pages/"+page,
@@ -56,7 +63,8 @@
               getPage(location.hash);  
           };
 
-          getPage(location.hash);
+          var page = location.hash || '#!index.md';
+          getPage(page);
       </script>
    </body>
 </html>
