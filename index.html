@@ -34,7 +34,7 @@
           };
           var parseBody = function(body){
               $('#entry-bd').html(marked.parse(body));
-              var title = $('#entry-bd>h1').text();   
+              var title = $('#entry-bd > h1').text();   
               if(title) {
                   document.title = title;
               }else {
