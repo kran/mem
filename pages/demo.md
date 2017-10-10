@@ -1,6 +1,8 @@
 An h1 header
 ============
 
+[TOC]
+
 Paragraphs are separated by a blank line.
 
 2nd paragraph. *Italic*, **bold**, and `monospace`. Itemized lists
@@ -20,7 +22,7 @@ content starts at 4-columns in.
 > if you like.
 
 Use 3 dashes for an em-dash. Use 2 dashes for ranges (ex., "it's all
-in chapters 12--14"). Three dots ... will be converted to an ellipsis.
+in chapters 12---14"). Three dots ... will be converted to an ellipsis.
 Unicode is supported. ☺
 
 
@@ -99,11 +101,11 @@ doc](#an-h2-header). Here's a footnote [^1].
 
 Tables can look like this:
 
-size  material      color
-----  ------------  ------------
-9     leather       brown
-10    hemp canvas   natural
-11    glass         transparent
+|size  |material      |color
+|----  |------------  |------------
+|9     |leather       |brown
+|10    |hemp canvas   |natural
+|11    |glass         |transparent
 
 Table: Shoes, their sizes, and what they're made of
 
@@ -123,8 +125,10 @@ Here's a definition list:
 
 apples
   : Good for making applesauce.
+
 oranges
   : Citrus!
+
 tomatoes
   : There's no "e" in tomatoe.
 
