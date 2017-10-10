@@ -1,56 +1,67 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>lab</title>
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <meta name="format-detection" content="telephone=no">
+      <meta content="telephone=no" name="format-detection">
+      <link rel="stylesheet" href="static/page.css">
+      <title>V2U</title>
+   </head>
+   <body class="yue">
+      <div class="header">
+         <h1 class="page-title"><a href="/">V2U</a></h1>
+         <div class="page-subtitle">「时间是最好的助手」</div>
+      </div>
+      <div class="content" id="content">
+         <div class="entry">
+            <div class="entry-hd" id="entry-hd">
+               <h2><a href="javascript:void(0);">&gt Loading....</a></h2>
+               <div class="meta"><span class="time"></span></div>
+            </div>
+            <div class="entry-bd" id="entry-bd">
+            </div>
+         </div>
+      </div>
+      <div class="footer">
+         <div class="copyright"><span>&copy; 2017</span><a href="http://v2u.org">V2U</a><span>Made By</span><a href="http://gaowhen.com">GaoWhen</a></div>
+      </div>
+      <script src="static/zepto.min.js"></script>
+      <script src="static/marked.js"></script>
+      <script>
+          var stripUrl = function(url){
+              var match = url.match(/#!(.+)$/);  
+              return match ? match[1] : "/index.md";
+          };
+          var parseBody = function(body){
+              $('#entry-bd').html(marked.parse(body));
+              var title = $('#entry-bd>h1').text();   
+              if(title) {
+                  document.title = title;
+              }else {
+                  document.title = location.hash;
+              }
 
-    <style>
-        #body h1:first-child{ font-size: 14px; font-weight:bold}
-        a, a:visited {  text-decoration:none }
-    </style>
+              $('#entry-hd h2 a').html(document.title);
+          };
+          var getPage = function(page){
+              page = stripUrl(decodeURIComponent(page));
+              $.ajax({
+                type: "GET",
+                url: "pages/"+page,
+                success: parseBody,
+                error: function(d) { parseBody("# 404\n页面丢了……"); }
+              });
+          };
 
-  </head>
-  <body style="background-color:#f7f7f7;">
-    <div>
-        <header>
-            <h1 align="center"><a style="color: #333;" href="#!/index.md">lab</a></h1>
-        </header>
-        <div>
-            <section id="body" >
-                &gt; loading...
-            </section>
-        </div>
-    </div>
-    <script src="static/zepto.min.js"></script>
-    <script src="static/marked.js"></script>
-    <script>
-        var stripUrl = function(url){
-            var match = url.match(/#!(.+)$/);  
-            return match ? match[1] : "/index.md";
-        };
-        var parseBody = function(body){
-            $('#body').html(marked.parse(body));
-            var title = $('#body>h1').text();   
-            if(title) document.title = title;
-            else document.title = page
-        };
-        var getPage = function(page){
-            page = stripUrl(decodeURIComponent(page));
-            $.ajax({
-              type: "GET",
-              url: "pages/"+page,
-              success: parseBody,
-              error: function(d) { parseBody("# 404\n页面丢了……"); }
-            });
-        };
+          window.onhashchange = function(){
+              $('#body').html('> loading...');
+              getPage(location.hash);  
+          };
 
-        window.onhashchange = function(){
-            $('#body').html('> loading...');
-            getPage(location.hash);  
-        };
-
-        getPage(location.hash);
-    </script>
-  </body>
+          getPage(location.hash);
+      </script>
+   </body>
 </html>
