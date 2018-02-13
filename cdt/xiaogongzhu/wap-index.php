@@ -1,1 +1,0 @@
-wap-index.php
