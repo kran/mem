@@ -1448,6 +1448,10 @@ html {
 			width: auto;
 			margin-right: 0
 		}
+		
+		.post-content,.post-content p {
+			padding-left: 0; padding-right: 0;
+		}
 
 		.post .post-content img .large {
 			max-width: 100%;
