@@ -728,22 +728,8 @@ html {
 	}
 
 	.grap li {
-		margin-left: 30px;
 		margin-bottom: 12px;
 		padding-top: 2px
-	}
-
-	.grap li:before {
-		content: "•";
-		box-sizing: border-box;
-		color: #f05f70;
-		font-weight: 700;
-		font-size: 14px;
-		margin-left: -58px;
-		padding-right: 15px;
-		display: inline-block;
-		text-align: right;
-		width: 58px
 	}
 
 	.grap ol {
