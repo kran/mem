@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:b="http://www.google.com/2005/gml/b" xmlns:data="http://www.google.com/2005/gml/data" xmlns:expr="http://www.google.com/2005/gml/expr">  
+  &lt;!--<head>--&gt;&lt;head&gt; 
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" /> 
+	<meta content="yes" name="apple-mobile-web-app-capable" /> 
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" /> 
+	<meta content="telephone=no" name="format-detection" /> 
+	<meta name="renderer" content="webkit" /> 
+	<b:include data="blog" name="all-head-content"/>  
+	<title><data:blog.pageTitle/></title>  
+    <b:skin><![CDATA[/*
+	-----------------------------------------------
+	Template Name  : for-x
+	Author         : kran
+	Author URL     : https://v2u.org/
+	Created Date   : Dec 9, 2019
+	License        : GNU General Public License version 2.0
+	----------------------------------------------- */
+	*/]]></b:skin>  
+     
+    <link href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>  
+    <link href="https://cdt.v2u.org/forx/style.css" type="text/css" rel="stylesheet"/>  
+    <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"/> 
+	<script type="text/javascript">//<![CDATA[
+	function createSummary(pID){
+		var body = $(pID).text();
+		var summary = "";
+		if(body.length <= 200) 
+			summary = body;
+		else 
+			summary = body.substring(0, 200) + "...";
+		
+		$(pID).html(summary);
+	}
+	//]]> </script> 
+  &lt;/head&gt;&lt;!--</head>--&gt; 
+  <body> 
+    <div class="side-click-mask"/>  
+    <div class="move-block"> 
+      <header id="header"> 
+        <div class="in-mark"> 
+          <div class="container"></div> 
+        </div> 
+      </header>  
+      <section id="body"> 
+        <div class="container"> 
+          <div id="main"> 
+            <div class="res-cons"> 
+              <b:section class="main" id="main" showaddelement="yes"> 
+                <b:widget id="Blog1" locked="true" title="blog posts" type="Blog"> 
+                  <!-- blog list loop -->  
+                  <b:includable id="main" var="top"> 
+                    <b:include data="top" name="status-message"/>  
+                    <b:loop values="data:posts" var="post"> 
+                      <b:include data="post" name="post"/> 
+                    </b:loop>  
+                    <b:include name="nextprev"/> 
+                  </b:includable>  
+                  <!-- next prev -->  
+                  <b:includable id="nextprev"> 
+                    <b:if cond='data:blog.pageType != "item"'> 
+                      <div class="page-navigator"> 
+                        <div class="in-mark"> 
+                          <b:if cond="data:newerPageUrl"> 
+                            <a class="next" expr:title="data:newerPageTitle" expr:href="data:newerPageUrl">
+                              <data:newerPageTitle/> »
+                            </a> 
+                          </b:if>  
+                          <b:if cond="data:olderPageUrl"> 
+                            <a class="prev" expr:title="data:olderPageTitle" expr:href="data:olderPageUrl">« 
+                              <data:olderPageTitle/>
+                            </a> 
+                          </b:if> 
+                        </div> 
+                      </div>  
+                      <b:else/>  
+					  <div class="layoutSingleColumn"> 
+                      <ul class="post-near"> 
+                        <b:if cond="data:olderPageUrl"> 
+                          <li class="left">« 
+                            <a class="prev" expr:title="data:olderPageTitle" expr:href="data:olderPageUrl">
+                              <data:olderPageTitle/>
+                            </a>
+                          </li> 
+                        </b:if>  
+                        <b:if cond="data:newerPageUrl"> 
+                          <li class="right">
+                            <a class="next" expr:title="data:newerPageTitle" expr:href="data:newerPageUrl">
+                              <data:newerPageTitle/>
+                            </a> »
+                          </li> 
+                        </b:if>  
+                        <li class="clearfix"/> 
+                      </ul> 
+					  </div>
+                    </b:if> 
+                  </b:includable>  
+                  <!-- single post -->  
+                  <b:includable id="post" var="post"> 
+                    <b:if cond="data:blog.pageType != &quot;item&quot;"> 
+                      <article class="post"> 
+                        <header class="post-meta"> 
+                          <time expr:datetime="data:post.timestampISO8601" pubdate="pubdate" class="post-date">
+                            <data:post.timestamp/>
+                          </time>  
+                          <h2 class="post-title">
+                            <a expr:href="data:post.url">
+                              <data:post.title/>
+                            </a> 
+                          </h2> 
+                        </header>  
+                        <div class="post-content post-list-content" expr:id="&quot;summary-&quot; + data:post.id"> 
+                          <data:post.body/> 
+                        </div>  
+                        <script>createSummary("#summary-<data:post.id/>");</script> 
+                      </article>  
+                      <b:else/>  
+                      <div class="layoutSingleColumn"> 
+                        <article class="u-paddingTop50" itemscope="itemscope" itemtype="http://schema.org/Article"> 
+                          <header class="entry-header"> 
+                            <h2 class="entry-title" itemprop="headline">
+                              <data:post.title/>
+                            </h2>  
+                            <div class="entry-meta"> 
+                              <a>
+                                <time class="lately-a" expr:datetime="data:post.timestampISO8601" itemprop="datePublished">
+                                  <span>
+                                    <data:post.timestamp/>
+                                  </span>
+                                </time>
+                              </a>  
+                              <span class="middotDivider"/> 
+                            </div> 
+                          </header>  
+                          <div class="grap" itemprop="articleBody"> 
+                            <data:post.body/> 
+                          </div>  
+                          <p itemprop="keywords" class="tags"> 
+                            <b:loop values="data:post.labels" var="label"> 
+                              <a expr:href="data:label.url" rel="tag">
+                                <data:label.name/>
+                              </a> 
+                            </b:loop> 
+                          </p> 
+                        </article> 
+                      </div> 
+                    </b:if> 
+                  </b:includable> 
+                </b:widget> 
+              </b:section> 
+            </div> 
+          </div> 
+        </div> 
+      </section>  
+      <asid id="secondary"> 
+        <div class="sidebar"> 
+          <section class="widget"> 
+            <div class="sidebar-brand"> 
+              <a href="#">pro sidebar</a> 
+            </div>  
+            <div class="canvi-user-info"> 
+              <div class="canvi-user-info__image"> 
+                <img src="https://img.vpsmm.com/avatar/avatar/robot.png"/> 
+              </div>  
+              <div class="canvi-user-info__data"> 
+                <span class="canvi-user-info__title">
+                  <data:blog.title/>
+                </span>  
+                <a expr:href="data:blog.homepageUrl" class="canvi-user-info__meta">
+                  <data:description/>
+                </a>  
+                <div class="canvi-user-info__close" onclick="t.close();"/> 
+              </div> 
+            </div>  
+            <section class="widget"> 
+              <form id="search" method="get" action="/search"> 
+                <input id="search_value" placeholder="搜...搜什么嘞~" name="q" type="text" value="" class="search"/> 
+              </form> 
+            </section> 
+          </section>  
+		  <b:section class="sidebar" id="sidebar1" showaddelement="yes"> 
+		  <b:widget id="PageList1" locked="false" title="Pages" type="PageList"> 
+              <b:includable id="main"> 
+               <section class="widget"> 
+				<div id="nav-menu"> 
+					<ul style="text-align: center">  
+                      <b:loop values="data:links" var="link"> 
+						<li>
+                        <b:if cond="data:link.isCurrentPage"> 
+
+                            <a class="selected active current" expr:href="data:link.href">
+                              <data:link.title/>
+                            </a>
+ 
+                          <b:else/>  
+                            <a expr:href="data:link.href">
+                              <data:link.title/>
+                            </a>
+                          
+                        </b:if> 
+						</li> 
+                      </b:loop> 
+                    </ul> 
+				</div> 
+				</section>
+              </b:includable> 
+            </b:widget> 
+		  </b:section>
+        </div>  
+        <div class="sidebar-footer"> 
+          <a href="" target="_blank">
+            <i class="fa fa-github fa-fw"/>
+          </a>  
+          <a href="" target="_blank">
+            <i class="fa fa-music fa-fw"/>
+          </a>  
+          <a href="" target="_blank">
+            <i class="fa fa-envelope-o fa-fw"/>
+          </a> 
+        </div> 
+      </asid>  
+      <footer id="footer"> 
+        <div class="in-mark"> 
+          <div class="container">Copyright © 
+            <script type="text/javascript">document.write((new Date()).getFullYear());</script> 「 
+            <a expr:href="data:blog.homepageUrl">
+              <data:blog.title/>
+            </a> 」/ ThemeBy <a href="https://cnm.im">for-x</a>
+          </div> 
+        </div> 
+      </footer> 
+    </div>  
+    <button class="side-click click-hamburger">
+      <span class="bar"/> 
+    </button>  
+    <script type="text/javascript" src="https://cdt.v2u.org/forx/app.js"></script>
+  &lt;!--</body>--&gt;&lt;/body&gt; 
+</html>
