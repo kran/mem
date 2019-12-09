@@ -1014,7 +1014,7 @@ html {
 		z-index: 100;
 		border-right: 1px solid #eee;
 		font-size: 15px;
-		background-color: rgba(255,255,255,0)
+		background-color: rgba(255,255,255,0.7)
 	}
 
 	#secondary .sidebar {
@@ -1110,12 +1110,16 @@ html {
 		padding: 0 33px;
 		line-height: 3.5;
 		border: none;
-		background-color: rgba(255,255,255,0);
+		
 		font-size: 13px;
 		-webkit-transition: all .1s ease-in;
 		-moz-transition: all .1s ease-in;
 		-o-transition: all .1s ease-in;
-		transition: all .1s ease-in
+		transition: all .1s ease-in;
+		margin:2%;
+		background-color: #f1f1f1;
+		border-radius: 12px;
+		width:96%;
 	}
 
 	#search button {
