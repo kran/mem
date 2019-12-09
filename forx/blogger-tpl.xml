@@ -121,6 +121,7 @@
                         <article class="u-paddingTop50" itemscope="itemscope" itemtype="http://schema.org/Article"> 
                           <header class="entry-header"> 
                             <h2 class="entry-title" itemprop="headline">
+							  <a expr:href='data:blog.homepageUrl'><i aria-hidden='true' class='fa fa-arrow-circle-o-left'/></a>
                               <data:post.title/>
                             </h2>  
                             <div class="entry-meta"> 
