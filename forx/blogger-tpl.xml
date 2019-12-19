@@ -163,7 +163,7 @@
             </div>  
             <div class="canvi-user-info"> 
               <div class="canvi-user-info__image"> 
-                <img src="https://img.vpsmm.com/avatar/avatar/robot.png"/> 
+                <img src="https://gravatar.loli.net/avatar/a6316b6d253f684920a5786c4b5d9cad"/> 
               </div>  
               <div class="canvi-user-info__data"> 
                 <span class="canvi-user-info__title">
@@ -208,6 +208,19 @@
 				</section>
               </b:includable> 
             </b:widget> 
+			
+			<b:widget id='Label1' locked='false' title='标签' type='Label' visible='true'>
+				<b:includable id='main' var='this'>
+				   <section class="widget labels"> 
+					<b:loop values="data:labels" var="label"> 
+						<a class="label" expr:href="data:label.url">
+						  <data:label.name/><span class="count"><data:label.count/></span>
+						</a>
+				    </b:loop> 
+				   </section>	
+				</b:includable>
+			</b:widget>
+			<!--tags end-->
 		  </b:section>
         </div>  
         <div class="sidebar-footer"> 

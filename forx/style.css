@@ -402,3 +402,4 @@ ol.comment-list{list-style:none;padding:0;color:#000;line-height:1.9}
 .status-msg-body{text-align:center;padding:.3em 0;width:100%;position:absolute;z-index:4}
 .status-msg-hidden{visibility:hidden;padding:.3em 0}
 .status-msg-wrap a{padding-left:.4em;text-decoration:underline}
+.label { font-size: 12px; margin:4px; padding:4px; border-radius: 4px; background:#f1f1f1; display:inline-block; } 
