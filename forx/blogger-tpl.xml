@@ -213,8 +213,8 @@
 				<b:includable id='main' var='this'>
 				   <section class="widget labels"> 
 					<b:loop values="data:labels" var="label"> 
-						<a class="label" expr:href="data:label.url">
-						  <data:label.name/><span class="count"><data:label.count/></span>
+						<a class="label-item" expr:href="data:label.url">
+						  <data:label.name/>(<data:label.count/>)
 						</a>
 				    </b:loop> 
 				   </section>	
