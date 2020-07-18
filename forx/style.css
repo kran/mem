@@ -83,6 +83,7 @@ textarea{resize:vertical}
 #header .site-name .site-avatar{width:27px;height:27px;border-radius:100%;border:2px solid #000;padding:2px;vertical-align:middle;margin-right:5px}
 #main{margin:0 auto}
 #comments,.in-mark,.post-content,.post-content p,.post-meta,code,pre{max-width:750px;margin-left:auto;margin-right:auto;padding-left:40px;padding-right:40px}
+pre{padding:10px !important;}
 .wide-mark{padding-left:25px;padding-right:25px}
 .post{padding:20px 0 23px}
 .post .post-date{text-align:left;display:block;text-indent:.1em;color:#ddd;font-weight:bolder}
